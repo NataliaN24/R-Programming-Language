@@ -13,3 +13,4 @@
 #v=? P(X>V)=0.8
 #P(X<=v)=0.2
 qunif(0.2,495,502)
+punif(496.4,495,502) # rezultata shte e 0.2
