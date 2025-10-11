@@ -4,6 +4,7 @@
 а) Каква е вероятността да извадим зелена топка?
 б) Ако извадената топка е зелена, каква е вероятността да е извадена от втората кутия?
 
+a) 
 sim.dice.ball.a <- fucntion(){
 dice <- sample(c(1:6),1)
 if(dice==6)
@@ -17,3 +18,20 @@ ball=="g"
 
 res <-replicate(100000,sim.dice.ball.a( ))
 sum(res)/length(res)
+
+b)
+sim.dice.ball.b <- function() {
+  dice <- sample( c(1:6), 1 )
+  if (dice==6) {
+    ball <- sample( c("g", "g", "r", "r"), 1 )
+  } else {
+    ball <- sample( c("g", "r", "r", "r", "r"), 1 )
+  }
+  c(dice, ball)
+}
+
+res <- replicate( Nrep, sim.dice.ball.b() )
+# б)
+sum(res[1,]!="6" & res[2,]=="g") / sum(res[2,]=="g")  броят на случаите, когато зелена топка е изтеглена от кутия 2 (dice != 6 & ball == "g")
+# а)
+sum(res[2,]=="g") / Nrep
